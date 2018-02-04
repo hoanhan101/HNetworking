@@ -2,6 +2,7 @@
 The goal of this project is to acquire a deeper understanding of network programming in Python.
 It follows the book [Foundations of Python Network Programming book, Third Edition by Brandon Rhodes, John Goerzen](https://github.com/brandon-rhodes/fopnp).
 
+
 Notes are made by me.
 
 ## Chapter 1: Client-Server Networking
@@ -21,7 +22,7 @@ if __name__ == '__main__':
     # Save our target in a variable
     address = '207 N. Defiance St, Archbold, OH'
 
-    # Get the result and print the answer
+    # Print the answer
     print(Geocoder.geocode(address)[0].coordinates)
 ```
 
