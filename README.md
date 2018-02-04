@@ -183,3 +183,34 @@ Connection: close
    "status" : "OK"
 }
 ```
+
+### IP Addresses
+
+Turning a Hostname into an IP Address
+```python
+
+import socket
+
+if __name__ == '__main__':
+    hostname = 'www.python.org'
+    addr = socket.gethostbyname(hostname)
+    print('The IP address of {} is {}'.format(hostname, addr))
+```
+
+**Ranges:**
+- `127.*.*.*`: reserved range that is local to the machine 
+- `10.*.*.*, 172.16–31.*.*, 192.168.*.*`: private subnets
+
+### Routing
+- `127.0.0.0/8`: first 8-bit must match 127
+- `192.168.0.0/16`: first 16-bit must match perfectly
+- `192.168.5.0/24`: individual subnet
+
+### Packet Fragmentation
+IP supports maximum 64KB packet but actual network devices are built usually support much small packet size.
+
+Internet packet include a 'Don't Fragment' (DF) flag for the user to decide if the packet is too big.
+- If DF unset, it will be split into small packets and reassembled at the end
+- If DF is set, it will be discarded and an error message will be sent back
+
+For UDP, DF is unset. For TCP, DF is set.
