@@ -15,11 +15,11 @@ It allows us to create a virutal environment where we can experiment installing/
 packages without contaminating your systemwide Python.
 
 **How to use `virtualenv` for a project once it get installed:**
-- `virtualenv –p python3 env_name` to create a virutal environment where `env_name` is your environment/directory name
+- `virtualenv –p python3 env_name` to create a virutal environment where `env_name` is your environment/directory name.
 - `cd env_name`
 - `. bin/activate`
-- Now you are inside your virtual environment, install dependency as normal: `pip install module_name`
-- Import module: `python -c 'import module_name'`
+- Now you are inside your virtual environment, install dependency as normal: `pip install module_name`.
+- Import module: `python -c 'import module_name'`.
 
 ### Stack and Library
 
@@ -27,8 +27,7 @@ packages without contaminating your systemwide Python.
 Find a longtitude and latitude of a given physical address.
 
 **Solution 1:** 
-Using a Python library ***pygeocoder***
-
+Use a Python library *pygeocoder*.
 ```python
 
 from pygeocoder import Geocoder
@@ -40,3 +39,19 @@ if __name__ == '__main__':
 ### Application Layers
 
 **Solution 2:**
+Instead of using *pygeocoder*, drop down one level and use *requests*.
+
+Use Google Geocoding API to fetch a JSON document.
+```python
+
+import requests
+def geocode(address):
+    parameters = {'address': address, 'sensor': 'false'}
+    base = 'http://maps.googleapis.com/maps/api/geocode/json'
+    response = requests.get(base, params=parameters)
+    answer = response.json()
+    print(answer['results'][0]['geometry']['location'])
+
+if __name__ == '__main__':
+    geocode('207 N. Defiance St, Archbold, OH')
+```
