@@ -12,8 +12,8 @@ Find a longtitude and latitude of a given physical address.
 
 ### Stack and Library
 
-**Solution 1:** 
-Use a Python library *pygeocoder*.
+**Solution 1:** Use a Python library *pygeocoder*.
+
 ```python
 
 from pygeocoder import Geocoder
@@ -28,8 +28,7 @@ if __name__ == '__main__':
 
 ### Application Layers
 
-**Solution 2:**
-Instead of using *pygeocoder*, drop down one level and use *requests*.
+**Solution 2:** Instead of using *pygeocoder*, drop down one level and use *requests*.
 
 Use Google Geocoding API to fetch a JSON document.
 ```python
@@ -65,8 +64,9 @@ It consists:
 - the name of the machine where the document lives
 - the path of that document.
 
-**Solution 3:**
-Use HTTP to fetch the result directly.
+**Solution 3:** Use HTTP to fetch the result directly.
+
+Making a Raw HTTP Connection to Google Maps.
 ```python
 
 import http.client
@@ -96,4 +96,90 @@ def geocode(address):
 
 if __name__ == '__main__':
     geocode('207 N. Defiance St, Archbold, OH')
+```
+
+### A Raw Network Converstaion
+
+HTTP Protocol uses the capacity of modern operating systems to support a plain-text network conversation between two different programs across an IP network by using the TCP protocol.
+In other words, it operates by dictating exactly what the text of the messages will look like that pass back and forth between two hosts that can speak TCP.
+
+**Solution 4:** Talking to Google Maps Through a Bare Socket
+
+```python
+
+# Bottom layer: raw socket 
+# Provided by by the host OS to support basic communications on an IP network
+import socket
+
+# Use this to replace special characters in string using the %xx escape
+from urllib.parse import quote_plus
+
+# HTTP request:
+#   GET request, path of the document, and version of HTTP we support
+#   A series of headers that each consist of a name, a colon, a value, \r\n
+request_text = """\
+GET /maps/api/geocode/json?address={}&sensor=false HTTP/1.1\r\n\
+Host: maps.google.com:80\r\n\
+User-Agent: search4.py (Foundations of Python Network Programming)\r\n\
+Connection: close\r\n\
+\r\n\
+"""
+
+def geocode(address):
+    # Open a socket connection
+    sock = socket.socket()
+
+    # Connect to google maps on port 80
+    sock.connect(('maps.google.com', 80))
+
+    # Format out request
+    request = request_text.format(quote_plus(address))
+
+    # Send byte strings
+    sock.sendall(request.encode('ascii'))
+
+    raw_reply = b''
+    while True:
+        more = sock.recv(4096)
+        if not more:
+            break
+        raw_reply += more
+
+    # Decode the string and print it
+    print(raw_reply.decode('utf-8'))
+
+if __name__ == '__main__':
+    geocode('207 N. Defiance St, Archbold, OH')
+```
+
+Output:
+```
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=UTF-8
+Date: Sat, 23 Nov 2013 18:34:30 GMT
+Expires: Sun, 24 Nov 2013 18:34:30 GMT
+Cache-Control: public, max-age=86400
+Vary: Accept-Language
+Access-Control-Allow-Origin: *
+Server: mafe
+X-XSS-Protection: 1; mode=block
+X-Frame-Options: SAMEORIGIN
+Alternate-Protocol: 80:quic
+Connection: close
+{
+   "results" : [
+{
+...
+         "formatted_address" : "207 North Defiance Street, Archbold, OH 43502, USA",
+         "geometry" : {
+            "location" : {
+               "lat" : 41.521954,
+               "lng" : -84.306691
+},
+... },
+         "types" : [ "street_address" ]
+      }
+],
+   "status" : "OK"
+}
 ```
