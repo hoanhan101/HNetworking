@@ -3,10 +3,13 @@ The goal of this project is to acquire a deeper understanding of network program
 It follows the book [Foundations of Python Network Programming book, Third 
 Edition by Brandon Rhodes, John Goerzen](https://github.com/brandon-rhodes/fopnp).
 
-The source code for the book is avaiable online at [1](https://github.com/brandon-rhodes/fopnp/tree/m/py3).
-This is a setup with Docker that provides a smaple net work of 12 machines: [2](https://github.com/brandon-rhodes/fopnp/tree/m/playground).
+The source code for the book is avaiable online at 
+[https://github.com/brandon-rhodes/fopnp/tree/m/py3](https://github.com/brandon-rhodes/fopnp/tree/m/py3).
 
-Comments, updates, notes are made by me.
+This is a setup with Docker that provides a sample network of 12 machines:
+[https://github.com/brandon-rhodes/fopnp/tree/m/playground](https://github.com/brandon-rhodes/fopnp/tree/m/playground).
+
+Notes are made by me.
 
 ## Chapter 1: Client-Server Networking
 
