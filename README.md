@@ -34,8 +34,12 @@ Use a Python library *pygeocoder*.
 ```python
 
 from pygeocoder import Geocoder
+
 if __name__ == '__main__':
+    # Save our target in a variable
     address = '207 N. Defiance St, Archbold, OH'
+
+    # Print the answer
     print(Geocoder.geocode(address)[0].coordinates)
 ```
 
@@ -48,11 +52,21 @@ Use Google Geocoding API to fetch a JSON document.
 ```python
 
 import requests
+
 def geocode(address):
+    # Construct query parameters
     parameters = {'address': address, 'sensor': 'false'}
+
+    # Base URL
     base = 'http://maps.googleapis.com/maps/api/geocode/json'
+
+    # Issue a GET request
     response = requests.get(base, params=parameters)
+
+    # Load the reponse in JSON
     answer = response.json()
+
+    # Print the answer
     print(answer['results'][0]['geometry']['location'])
 
 if __name__ == '__main__':
@@ -74,6 +88,7 @@ Use HTTP to fetch the result directly.
 import http.client
 import json
 from urllib.parse import quote_plus
+
 base = '/maps/api/geocode/json'
 
 def geocode(address):
@@ -91,6 +106,8 @@ def geocode(address):
 
     # Load to JSON
     reply = json.loads(rawreply.decode('utf-8'))
+
+    # Print the answer
     print(reply['results'][0]['geometry']['location'])
 
 if __name__ == '__main__':
