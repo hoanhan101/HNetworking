@@ -1,20 +1,20 @@
 # python network programming
 The goal of this project is to acquire a deeper understanding of network programming in Python.
 It follows the book [Foundations of Python Network Programming book, Third 
-Edition by Brandon Rhodes, John Goerzen.](https://github.com/brandon-rhodes/fopnp).
+Edition by Brandon Rhodes, John Goerzen](https://github.com/brandon-rhodes/fopnp).
 
-The source code for the book is avaiable online at [link](https://github.com/brandon-rhodes/fopnp/tree/m/py3).
-This is a setup with Docker that provides a smaple net work of 12 machines: [link](https://github.com/brandon-rhodes/fopnp/tree/m/playground).
+The source code for the book is avaiable online at [1](https://github.com/brandon-rhodes/fopnp/tree/m/py3).
+This is a setup with Docker that provides a smaple net work of 12 machines: [2](https://github.com/brandon-rhodes/fopnp/tree/m/playground).
 
 Comments, updates, notes are made by me.
 
 ## Chapter 1: Client-Server Networking
 
-**Why using `virtualenv`**: 
+**Why using `virtualenv`:**
 It allows us to create a virutal environment where we can experiment installing/uninstalling
 packages without contaminating your systemwide Python.
 
-**How to use `virtualenv` for a project once it get installed**
+**How to use `virtualenv` for a project once it get installed:**
 - `virtualenv –p python3 env_name` to create a virutal environment where `env_name` is your environment/directory name
 - `cd env_name`
 - `. bin/activate`
@@ -23,10 +23,10 @@ packages without contaminating your systemwide Python.
 
 ### Stack and Library
 
-**Goal**: 
+**Goal:**
 Find a longtitude and latitude of a given physical address.
 
-**Solution 1:**: 
+**Solution 1:** 
 Using a Python library ***pygeocoder***
 
 ```python
@@ -40,5 +40,3 @@ if __name__ == '__main__':
 ### Application Layers
 
 **Solution 2:**
-
-
