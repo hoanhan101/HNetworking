@@ -2,10 +2,6 @@
 The goal of this project is to acquire a deeper understanding of network programming in Python.
 It follows the book [Foundations of Python Network Programming book, Third Edition by Brandon Rhodes, John Goerzen](https://github.com/brandon-rhodes/fopnp).
 
-The source code for the book is avaiable online at [https://github.com/brandon-rhodes/fopnp/tree/m/py3](https://github.com/brandon-rhodes/fopnp/tree/m/py3).
-
-This is a setup with Docker that provides a sample network of 12 machines: [https://github.com/brandon-rhodes/fopnp/tree/m/playground](https://github.com/brandon-rhodes/fopnp/tree/m/playground).
-
 Notes are made by me.
 
 ## Chapter 1: Client-Server Networking
@@ -25,7 +21,7 @@ if __name__ == '__main__':
     # Save our target in a variable
     address = '207 N. Defiance St, Archbold, OH'
 
-    # Print the answer
+    # Get the result and print the answer
     print(Geocoder.geocode(address)[0].coordinates)
 ```
 
