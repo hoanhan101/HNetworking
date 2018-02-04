@@ -1,33 +1,19 @@
 # python network programming
 The goal of this project is to acquire a deeper understanding of network programming in Python.
-It follows the book [Foundations of Python Network Programming book, Third 
-Edition by Brandon Rhodes, John Goerzen](https://github.com/brandon-rhodes/fopnp).
+It follows the book [Foundations of Python Network Programming book, Third Edition by Brandon Rhodes, John Goerzen](https://github.com/brandon-rhodes/fopnp).
 
-The source code for the book is avaiable online at 
-[https://github.com/brandon-rhodes/fopnp/tree/m/py3](https://github.com/brandon-rhodes/fopnp/tree/m/py3).
+The source code for the book is avaiable online at [https://github.com/brandon-rhodes/fopnp/tree/m/py3](https://github.com/brandon-rhodes/fopnp/tree/m/py3).
 
-This is a setup with Docker that provides a sample network of 12 machines:
-[https://github.com/brandon-rhodes/fopnp/tree/m/playground](https://github.com/brandon-rhodes/fopnp/tree/m/playground).
+This is a setup with Docker that provides a sample network of 12 machines: [https://github.com/brandon-rhodes/fopnp/tree/m/playground](https://github.com/brandon-rhodes/fopnp/tree/m/playground).
 
 Notes are made by me.
 
 ## Chapter 1: Client-Server Networking
 
-**Why using `virtualenv`:**
-It allows us to create a virutal environment where we can experiment installing/uninstalling
-packages without contaminating your systemwide Python.
-
-**How to use `virtualenv` for a project once it get installed:**
-- `virtualenv –p python3 env_name` to create a virutal environment where `env_name` is your environment/directory name.
-- `cd env_name`
-- `. bin/activate`
-- Now you are inside your virtual environment, install dependency as normal: `pip install module_name`.
-- Import module: `python -c 'import module_name'`.
-
-### Stack and Library
-
 **Goal:**
 Find a longtitude and latitude of a given physical address.
+
+### Stack and Library
 
 **Solution 1:** 
 Use a Python library *pygeocoder*.
@@ -74,6 +60,7 @@ if __name__ == '__main__':
 ```
 
 ### Speaking a Protocol
+
 The second solution works because it creates a URL and fetches the document that corresponding to it.
 The URL provides instructions that tell a lower level protocol, Hypertext Transfer Protocol (HTTP), how to find the document.
 It consists:
